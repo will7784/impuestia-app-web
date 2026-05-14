@@ -96,7 +96,7 @@ const TESTIMONIALS: Record<string, string> = {
 }
 
 const COMPANY_TYPES: Record<string, string> = {
-  'Sole Proprietorship': 'Empresa Individual',
+  'Empresario Individual': 'Empresa Individual',
   LTDA: 'Limitada (LTDA)',
   SPA: 'Sociedad por Acciones (SPA)',
   'Comandita': 'Comandita',
@@ -150,7 +150,7 @@ async function mockDeepSeekResponse(
             : `Hola! Soy ClaudIA, tu asesora tributaria inteligente. Me da mucho gusto conocerte.`
           resolve({
             text: `${greeting} Estoy aqui para ayudarte a proteger tu negocio y resolver cualquier duda que tengas con el SII. Voy a hacerte unas preguntas rapidas para entender mejor tu situacion y poder asesorarte de la mejor manera. Primero: cuentame, que tipo de empresa tienes?`,
-            quickReplies: ['Sole Proprietorship', 'LTDA', 'SPA', 'Comandita', 'Cooperativa', 'Otro'],
+            quickReplies: ['Empresario Individual', 'LTDA', 'SPA', 'Comandita', 'Cooperativa', 'Otro'],
           })
           return
         }
@@ -227,7 +227,7 @@ async function mockDeepSeekResponse(
           }
 
           // Share relevant testimonial
-          const testimonialKey = hasCitation ? 'citation' : (profile.companyType === 'Sole Proprietorship' ? 'entrepreneur' : (profile.ageRange === '31-45' ? 'growing' : 'established'))
+          const testimonialKey = hasCitation ? 'citation' : (profile.companyType === 'Empresario Individual' ? 'entrepreneur' : (profile.ageRange === '31-45' ? 'growing' : 'established'))
           const testimonial = TESTIMONIALS[testimonialKey]
 
           resolve({
@@ -258,7 +258,7 @@ async function mockDeepSeekResponse(
           if (hasSii) {
             ebookTitle = 'Defensa Efectiva Ante el SII'
             ebookDescription = 'Protocolo paso a paso para enfrentar citaciones y requerimientos del SII. Conoce tus derechos.'
-          } else if (age === '18-30' || companyType === 'Sole Proprietorship') {
+          } else if (age === '18-30' || companyType === 'Empresario Individual') {
             ebookTitle = 'Guia del Emprendedor Tributario'
             ebookDescription = 'Todo lo que necesitas saber para manejar tus impuestos como emprendedor. Desde la inscripcion en el SII hasta las declaraciones mensuales.'
           } else if (age === '31-45') {
@@ -417,13 +417,6 @@ export class ClaudiaEngine {
       // End of conversation
     }
 
-    // Get response from mock DeepSeek
-    const response = await mockDeepSeekResponse(text, {
-      phase: currentPhase,
-      step: currentStep,
-      profile: this.state.profile,
-    })
-
     if (shouldAdvancePhase && currentPhase < 4) {
       this.state.phase = (currentPhase + 1) as Phase
       this.state.step = 0
@@ -431,13 +424,20 @@ export class ClaudiaEngine {
       this.state.step = currentStep + 1
     }
 
+    // Get response from mock DeepSeek
+    const response = await mockDeepSeekResponse(text, {
+      phase: this.state.phase,
+      step: this.state.step,
+      profile: this.state.profile,
+    })
+
     // After advancing, if we're in phase 3, auto-advance after showing ebook
     if (this.state.phase === 3 && this.state.step === 0) {
       const claudiaMsg = createMessage(
         'claudia',
         response.text,
-        currentPhase,
-        currentStep,
+        this.state.phase,
+        this.state.step,
         response.quickReplies
       )
       this.state.messages.push(claudiaMsg)
@@ -449,12 +449,12 @@ export class ClaudiaEngine {
     }
 
     // Phase 4, step 1: Show payment buttons
-    if (currentPhase === 4 && currentStep === 1) {
+    if (this.state.phase === 4 && this.state.step === 1) {
       const claudiaMsg = createMessage(
         'claudia',
         response.text,
-        currentPhase,
-        currentStep,
+        this.state.phase,
+        this.state.step,
         response.quickReplies
       )
       this.state.messages.push(claudiaMsg)
@@ -466,8 +466,8 @@ export class ClaudiaEngine {
     const claudiaMsg = createMessage(
       'claudia',
       response.text,
-      currentPhase,
-      currentStep,
+      this.state.phase,
+      this.state.step,
       response.quickReplies
     )
     this.state.messages.push(claudiaMsg)

@@ -7,7 +7,6 @@ import MessageBubble from '@/components/voice/MessageBubble'
 import QuickReplyChips from '@/components/voice/QuickReplyChips'
 import ChatInput from '@/components/voice/ChatInput'
 import PhaseProgress from '@/components/voice/PhaseProgress'
-import LeadProfileCard from '@/components/voice/LeadProfileCard'
 import PaymentPanel from '@/components/voice/PaymentPanel'
 import EbookPreview from '@/components/voice/EbookPreview'
 import PaymentConfirmation from '@/components/voice/PaymentConfirmation'
@@ -538,9 +537,6 @@ export default function Agent() {
                        bg-[#0a0a0a]/60 backdrop-blur-md overflow-y-auto"
         >
           <div className="p-4 space-y-4">
-            {/* Lead Profile Card */}
-            <LeadProfileCard profile={profile} currentPhase={currentPhase} />
-
             {/* Phase Progress */}
             <div
               className="rounded-2xl p-4 border border-white/[0.08]"

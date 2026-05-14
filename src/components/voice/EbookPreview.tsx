@@ -9,7 +9,7 @@ interface EbookPreviewProps {
 
 export default function EbookPreview({
   ageRange = '18-30',
-  companyType = 'Sole Proprietorship',
+  companyType = 'Empresario Individual',
   hasSII = false,
 }: EbookPreviewProps) {
   const ebook = selectEbook(ageRange, companyType, hasSII)
