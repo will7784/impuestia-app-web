@@ -225,20 +225,20 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
             textTransform: 'uppercase',
           }}
         >
-          Asesoria Tributaria Profesional
+          Especialistas Tributarios
         </div>
 
         <h1
           className="hero-title opacity-0 translate-y-[30px] text-white font-extrabold leading-[0.95] tracking-[-0.02em] text-[40px] md:text-[72px]"
         >
-          Tu Tranquilidad Tributaria Comienza Aqui
+          Tu Tranquilidad Tributaria Comienza Aquí
         </h1>
 
         <p
           className="hero-subtitle opacity-0 translate-y-5 mt-6 text-[#b0b0b0] text-lg font-normal leading-relaxed max-w-[520px] mx-auto"
           style={{ textWrap: 'pretty' }}
         >
-          Expertos en proteccion fiscal. Te defendemos del SII para que te enfoques en hacer crecer tu negocio.
+          Especialistas en protección fiscal. Te defendemos ante el SII para que enfoques tu energía en hacer crecer tu empresa.
         </p>
 
         <button

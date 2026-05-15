@@ -73,7 +73,7 @@ export default function FinalCTASection({ onOpenLeadModal }: FinalCTASectionProp
           Hablemos de tu Caso
         </h2>
         <p className="cta-subtitle text-[#b0b0b0] text-lg mt-6 max-w-[600px] mx-auto">
-          No esperes a que el SII tome la iniciativa. Protege tu negocio ahora con asesores especializados.
+          No esperes a que el SII tome la iniciativa. Protege tu negocio ahora con especialistas tributarios.
         </p>
 
         <button

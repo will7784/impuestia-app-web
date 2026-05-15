@@ -85,13 +85,13 @@ export default function ServicesSection() {
               textTransform: 'uppercase',
             }}
           >
-            SOLUCIONES
+            ESPECIALIDAD
           </div>
           <h2 className="text-white text-[28px] md:text-[48px] font-extrabold leading-tight">
-            Nuestros Servicios Especializados
+            Especialistas en Impuestos
           </h2>
           <p className="text-[#b0b0b0] text-lg mt-4 max-w-[600px]">
-            Ofrecemos soluciones integrales para proteger tu patrimonio y optimizar tu situacion fiscal.
+            Nos dedicamos a resolver problemas tributarios complejos. Como parte de nuestra práctica integral, también acompañamos a PYMEs en supervisión contable y cash management.
           </p>
         </div>
 

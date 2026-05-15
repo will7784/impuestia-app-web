@@ -112,7 +112,7 @@ export default function WhyChooseUsSection() {
               Por Que Elegirnos
             </h2>
             <p className="text-[#b0b0b0] text-lg mt-4">
-              Somos especialistas en materia tributaria con anos de experiencia defendiendo a contribuyentes chilenos.
+              Somos especialistas en materia tributaria con años de experiencia defendiendo a contribuyentes chilenos. Nuestro trabajo se complementa con servicios de supervisión contable y cash management para PYMEs que buscan una visión integral.
             </p>
             <button
               onClick={scrollToServices}
