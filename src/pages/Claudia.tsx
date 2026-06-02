@@ -96,14 +96,14 @@ export default function Claudia() {
 
           {/* Subtitle */}
           <p
-            className="mt-4 text-[#b0b0b0] text-xl leading-relaxed max-w-[500px]"
+            className="mt-3 text-[#b0b0b0] text-base leading-relaxed max-w-[460px]"
             style={{
               opacity: formVisible ? 1 : 0,
               transform: formVisible ? 'translateY(0)' : 'translateY(20px)',
               transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s',
             }}
           >
-            Tu asesora tributaria inteligente. Te regalo una guía precisa con los pasos que recomendamos seguir ante un escenario de citación del SII.
+            Tu asistente virtual. Te regalo una guía precisa con los pasos que recomendamos seguir ante un escenario de citación del SII.
           </p>
 
           {/* Form */}
