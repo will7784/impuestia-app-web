@@ -42,11 +42,10 @@ const COMPANY_TYPES: Record<string, string> = {
 }
 
 const TAX_REGIMES: Record<string, string> = {
-  '14 ter': 'Régimen 14 ter',
-  '14 bis': 'Régimen 14 bis',
-  '14 quater': 'Régimen 14 quater',
-  '14 sexies': 'Régimen 14 sexies',
-  OTRO: 'Otro régimen',
+  'Pro PYME General': 'Régimen Pro PYME General',
+  'Pro PYME Transparente': 'Régimen Pro PYME Transparente',
+  'Régimen General Semi-Integrado': 'Régimen General Semi-Integrado',
+  'Otros regímenes (especifique)': 'Otros regímenes',
 }
 
 function generateId(): string {
@@ -116,7 +115,7 @@ async function mockDeepSeekResponse(
             ? `¡Hola ${profile.name}! Soy ClaudIA, tu asesora tributaria inteligente.`
             : `¡Hola! Soy ClaudIA, tu asesora tributaria inteligente.`
           resolve({
-            text: `${greeting} Te ayudo a proteger tu negocio ante el SII. Para enviarte la guía con tips útiles, cuéntame: ¿qué tipo de empresa tienes?`,
+            text: `${greeting} Para enviarte la guía con tips útiles, cuéntame: ¿qué tipo de empresa tienes?`,
             quickReplies: ['Empresario Individual', 'LTDA', 'SPA', 'Comandita', 'Cooperativa', 'Otro'],
           })
           return
@@ -124,7 +123,7 @@ async function mockDeepSeekResponse(
         if (step === 1) {
           resolve({
             text: `Perfecto. ¿Y qué régimen tributario utilizas actualmente?`,
-            quickReplies: ['14 ter', '14 bis', '14 quater', '14 sexies', 'OTRO'],
+            quickReplies: ['Pro PYME General', 'Pro PYME Transparente', 'Régimen General Semi-Integrado', 'Otros regímenes (especifique)'],
           })
           return
         }
