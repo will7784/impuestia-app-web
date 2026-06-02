@@ -35,17 +35,17 @@ export default function Footer() {
       className="w-full border-t border-white/[0.08]"
       style={{ backgroundColor: '#0a0a0a' }}
     >
-      <div className="max-w-[1200px] mx-auto px-[5vw] h-20 flex items-center justify-between flex-wrap gap-4">
+      <div className="max-w-[1200px] mx-auto px-[5vw] py-8 flex items-center justify-between flex-wrap gap-4">
         <div className="footer-item text-white text-xl font-bold tracking-tight">
-          Asesoria Tributaria
+          ImpuestIA
         </div>
 
         <div className="footer-item text-sm text-[#b0b0b0]">
-          contacto@asesoriatributaria.cl
+          contacto@impuestia.cl
         </div>
 
         <div className="footer-item flex items-center gap-3">
-          <span className="text-sm text-[#b0b0b0]">Santiago de Chile</span>
+          <span className="text-sm text-[#b0b0b0]">Chile · Colombia</span>
           <svg
             width="24"
             height="24"
@@ -56,7 +56,7 @@ export default function Footer() {
           >
             <rect x="4" y="4" width="32" height="32" rx="4" fill="white" />
             <text x="20" y="25" textAnchor="middle" fill="#0a0a0a" fontSize="14" fontWeight="700">
-              SII
+              IA
             </text>
           </svg>
         </div>

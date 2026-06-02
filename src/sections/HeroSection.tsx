@@ -44,10 +44,10 @@ const fragmentShader = `
 `
 
 interface HeroSectionProps {
-  onOpenLeadModal: () => void
+  onNavigateToClaudia: () => void
 }
 
-export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
+export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasContainerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -170,7 +170,7 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
   }, [])
 
   const handleCTAClick = () => {
-    onOpenLeadModal()
+    onNavigateToClaudia()
   }
 
   return (
@@ -225,20 +225,20 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
             textTransform: 'uppercase',
           }}
         >
-          Especialistas Tributarios
+          Asesoría Tributaria Potenciada con IA
         </div>
 
         <h1
           className="hero-title opacity-0 translate-y-[30px] text-white font-extrabold leading-[0.95] tracking-[-0.02em] text-[40px] md:text-[72px]"
         >
-          Tu Tranquilidad Tributaria Comienza Aquí
+          ImpuestIA
         </h1>
 
         <p
           className="hero-subtitle opacity-0 translate-y-5 mt-6 text-[#b0b0b0] text-lg font-normal leading-relaxed max-w-[520px] mx-auto"
           style={{ textWrap: 'pretty' }}
         >
-          Especialistas en protección fiscal. Te defendemos ante el SII para que enfoques tu energía en hacer crecer tu empresa.
+          Asesoría inteligente para tus impuestos en Chile y Colombia. Combinamos experiencia tributaria con inteligencia artificial (RAG) para defenderte ante el SII y optimizar tu carga fiscal.
         </p>
 
         <button
@@ -248,7 +248,7 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         >
-          Habla con Nosotros
+          Habla con ClaudIA
         </button>
       </div>
     </section>

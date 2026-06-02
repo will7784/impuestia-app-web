@@ -5,10 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 interface FinalCTASectionProps {
-  onOpenLeadModal: () => void
+  onNavigateToClaudia: () => void
 }
 
-export default function FinalCTASection({ onOpenLeadModal }: FinalCTASectionProps) {
+export default function FinalCTASection({ onNavigateToClaudia }: FinalCTASectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -70,26 +70,26 @@ export default function FinalCTASection({ onOpenLeadModal }: FinalCTASectionProp
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-[5vw] text-center">
         <h2 className="cta-h2 text-white text-[28px] md:text-[48px] font-extrabold leading-tight">
-          Hablemos de tu Caso
+          Protege tu Negocio Hoy
         </h2>
         <p className="cta-subtitle text-[#b0b0b0] text-lg mt-6 max-w-[600px] mx-auto">
-          No esperes a que el SII tome la iniciativa. Protege tu negocio ahora con especialistas tributarios.
+          Ya sea en Chile o Colombia, no esperes a que el fisco tome la iniciativa. Descarga nuestra guía gratuita y descubre cómo la IA puede ayudarte a dormir tranquilo.
         </p>
 
         <button
-          onClick={() => onOpenLeadModal()}
+          onClick={() => onNavigateToClaudia()}
           className="cta-button mt-10 bg-[#ff3366] text-white px-10 py-4 rounded-full font-bold uppercase tracking-wider text-base hover:scale-105 hover:shadow-[0_0_30px_rgba(255,51,102,0.4)] transition-all duration-300"
           style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
         >
-          Habla con Nosotros
+          Habla con ClaudIA
         </button>
 
         <p className="mt-5">
           <a
-            href="mailto:contacto@asesoriatributaria.cl"
+            href="mailto:contacto@impuestia.cl"
             className="text-sm text-[#b0b0b0] underline hover:text-white transition-colors"
           >
-            O escribenos a contacto@asesoriatributaria.cl
+            O escríbenos a contacto@impuestia.cl
           </a>
         </p>
       </div>

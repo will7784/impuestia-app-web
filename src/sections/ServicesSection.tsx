@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Shield, Scale, FileText, Lock } from 'lucide-react'
+import { Shield, Scale, Lock, Bot } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {
     icon: Shield,
-    title: 'Representacion Ante el SII',
-    description: 'Te representamos ante el Servicio de Impuestos Internos en inspecciones, citaciones y requerimientos fiscales. Protegemos tus derechos y gestionamos tus obligaciones tributarias.',
+    title: 'Representación Ante el SII / DIAN',
+    description: 'Te representamos ante el fisco en Chile (SII) y Colombia (DIAN) en inspecciones, citaciones y requerimientos fiscales. Protegemos tus derechos con estrategias respaldadas por IA.',
   },
   {
     icon: Scale,
@@ -17,14 +17,14 @@ const services = [
     description: 'Impugnamos multas y sanciones tributarias. Analizamos la legalidad de las resoluciones y construimos la mejor estrategia de defensa para tu caso.',
   },
   {
-    icon: FileText,
-    title: 'Recurso de Proteccion',
-    description: 'Presentamos recursos de proteccion contra actos arbitrarios del fisco. Defendemos tus garantias constitucionales frente a procedimientos abusivos.',
+    icon: Bot,
+    title: 'Asesoría con IA (RAG)',
+    description: 'Utilizamos inteligencia artificial con recuperación aumentada de generación (RAG) para analizar normativa tributaria chilena y colombiana en tiempo real, dándote respuestas precisas y actualizadas.',
   },
   {
     icon: Lock,
     title: 'Fraude Tributario',
-    description: 'Asesoria especializada en prevencion y defensa por delitos tributarios. Analisis de riesgo penal y estrategias legales para protegerte.',
+    description: 'Asesoría especializada en prevención y defensa por delitos tributarios. Análisis de riesgo penal y estrategias legales para protegerte.',
   },
 ]
 
@@ -88,10 +88,10 @@ export default function ServicesSection() {
             ESPECIALIDAD
           </div>
           <h2 className="text-white text-[28px] md:text-[48px] font-extrabold leading-tight">
-            Especialistas en Impuestos
+            Tecnología + Experiencia Tributaria
           </h2>
           <p className="text-[#b0b0b0] text-lg mt-4 max-w-[600px]">
-            Nos dedicamos a resolver problemas tributarios complejos. Como parte de nuestra práctica integral, también acompañamos a PYMEs en supervisión contable y cash management.
+            Combinamos años de experiencia en derecho tributario con inteligencia artificial de última generación para defender empresas en Chile y Colombia.
           </p>
         </div>
 

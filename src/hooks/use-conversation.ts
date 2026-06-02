@@ -1,20 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { createEngine, type EngineState, type Plan, type Phase } from '@/lib/claudia-engine'
+import { createEngine, type EngineState, type Phase } from '@/lib/claudia-engine'
 import type { LeadProfile } from '@/lib/claudia-engine'
 import { sendNotification } from '@/lib/email-service'
 import { saveLead } from '@/lib/airtable-service'
 
-export type Screen = 'hero' | 'conversation' | 'payment-success' | 'exit'
+export type Screen = 'hero' | 'conversation'
 
-export function useConversation(
-  name: string,
-  email: string,
-  onClaudiaMessage?: (text: string, mode: 'voice' | 'chat') => void
-) {
+export function useConversation(name: string, email: string) {
   const engineRef = useRef(createEngine(name, email))
   const [screen, setScreen] = useState<Screen>('hero')
   const [state, setState] = useState<EngineState>(engineRef.current.getState())
-  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null)
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
   const prevMsgCountRef = useRef(0)
   const setMessagesEndRef = useCallback((el: HTMLDivElement | null) => {
@@ -26,20 +21,9 @@ export function useConversation(
     const engine = engineRef.current
     engine.subscribe((newState) => {
       setState({ ...newState, messages: [...newState.messages] })
-
-      // Trigger TTS callback when ClaudIA generates a new message
-      if (onClaudiaMessage && newState.messages.length > prevMsgCountRef.current) {
-        const lastMsg = newState.messages[newState.messages.length - 1]
-        if (lastMsg && lastMsg.role === 'claudia' && !newState.isProcessing) {
-          // Small delay to let the message render first
-          setTimeout(() => {
-            onClaudiaMessage(lastMsg.text, newState.mode)
-          }, 100)
-        }
-      }
       prevMsgCountRef.current = newState.messages.length
     })
-  }, [onClaudiaMessage])
+  }, [])
 
   // Auto-scroll to bottom on new messages
   useEffect(() => {
@@ -62,11 +46,11 @@ export function useConversation(
   }, [state.profile, state.phase])
 
   const startConversation = useCallback(
-    async (mode: 'voice' | 'chat' = 'chat') => {
+    async () => {
       setScreen('conversation')
       const engine = engineRef.current
 
-      // Save lead to mock Airtable
+      // Save lead to Airtable
       await saveLead({
         name,
         email,
@@ -78,7 +62,7 @@ export function useConversation(
       sendNotification('new_lead', { name, email }).catch(console.error)
 
       // Start the conversation
-      await engine.startConversation(mode)
+      await engine.startConversation()
     },
     [name, email]
   )
@@ -99,58 +83,6 @@ export function useConversation(
     },
     [name, email, state.phase]
   )
-
-  const selectPlan = useCallback(
-    async (planName: string) => {
-      const engine = engineRef.current
-      await engine.selectPlan(planName)
-      sendNotification('plan_shown', {
-        name,
-        email,
-        planSelected: planName,
-      }).catch(console.error)
-    },
-    [name, email]
-  )
-
-  const completePayment = useCallback(
-    (plan: Plan) => {
-      setSelectedPlan(plan)
-      setScreen('payment-success')
-      const engine = engineRef.current
-      engine.setPaymentStatus('paid')
-      sendNotification('payment', {
-        name,
-        email,
-        planSelected: plan.name,
-      }).catch(console.error)
-    },
-    [name, email]
-  )
-
-  const showExitModal = useCallback(() => {
-    setScreen('exit')
-  }, [])
-
-  const closeExitModal = useCallback(() => {
-    setScreen('conversation')
-  }, [])
-
-  const handleExitSubmit = useCallback(
-    async (options: { ebooks: boolean; promotions: boolean; call: boolean; email: string }) => {
-      sendNotification('no_sale', {
-        name,
-        email: options.email,
-        exitReason: JSON.stringify(options),
-      }).catch(console.error)
-      setScreen('conversation')
-    },
-    [name]
-  )
-
-  const closePaymentSuccess = useCallback(() => {
-    setScreen('conversation')
-  }, [])
 
   const getLatestQuickReplies = useCallback((): string[] => {
     const msgs = state.messages
@@ -176,15 +108,8 @@ export function useConversation(
     state,
     messages: state.messages,
     isProcessing: state.isProcessing,
-    selectedPlan,
     startConversation,
     sendMessage,
-    selectPlan,
-    completePayment,
-    showExitModal,
-    closeExitModal,
-    handleExitSubmit,
-    closePaymentSuccess,
     getLatestQuickReplies,
     getCurrentProfile,
     getCurrentPhase,

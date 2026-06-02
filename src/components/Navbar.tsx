@@ -6,11 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-interface NavbarProps {
-  onOpenLeadModal?: () => void
-}
-
-export default function Navbar({ onOpenLeadModal }: NavbarProps) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -51,14 +47,9 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps) {
 
   const navLinks = [
     { label: 'Nuestros Servicios', id: 'servicios' },
-    { label: 'Por Que Elegirnos', id: 'porque-elegirnos' },
+    { label: 'Por Qué Elegirnos', id: 'porque-elegirnos' },
     { label: 'Testimonios', id: 'testimonios' },
   ]
-
-  const handleBlogClick = () => {
-    setMobileOpen(false)
-    navigate('/blog')
-  }
 
   return (
     <nav
@@ -83,7 +74,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps) {
           }}
           className="text-white text-xl font-bold tracking-tight"
         >
-          Asesoria Tributaria
+          ImpuestIA
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -97,23 +88,11 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps) {
             </button>
           ))}
           <button
-            onClick={handleBlogClick}
-            className="text-sm font-medium text-[#b0b0b0] hover:text-white transition-colors duration-300"
-          >
-            Blog
-          </button>
-          <button
-            onClick={() => {
-              if (onOpenLeadModal) {
-                onOpenLeadModal()
-              } else {
-                navigate('/agent')
-              }
-            }}
+            onClick={() => navigate('/claudia')}
             className="bg-[#ff3366] text-white text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(255,51,102,0.4)] transition-all duration-300"
             style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
           >
-            Habla con Nosotros
+            Habla con ClaudIA
           </button>
         </div>
 
@@ -141,23 +120,13 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps) {
             </button>
           ))}
           <button
-            onClick={handleBlogClick}
-            className="block w-full text-left py-3 text-base font-medium text-[#b0b0b0] hover:text-white transition-colors border-b border-white/[0.08]"
-          >
-            Blog
-          </button>
-          <button
             onClick={() => {
               setMobileOpen(false)
-              if (onOpenLeadModal) {
-                onOpenLeadModal()
-              } else {
-                navigate('/agent')
-              }
+              navigate('/claudia')
             }}
             className="mt-4 w-full bg-[#ff3366] text-white text-sm font-bold uppercase tracking-wider px-6 py-3 rounded-full"
           >
-            Habla con Nosotros
+            Habla con ClaudIA
           </button>
         </div>
       )}
