@@ -112,8 +112,8 @@ async function mockDeepSeekResponse(
       if (phase === 1) {
         if (step === 0) {
           const greeting = profile.name
-            ? `¡Hola ${profile.name}! Soy ClaudIA, tu asesora tributaria inteligente.`
-            : `¡Hola! Soy ClaudIA, tu asesora tributaria inteligente.`
+            ? `¡Hola ${profile.name}! Soy ClaudIA, tu asistente virtual.`
+            : `¡Hola! Soy ClaudIA, tu asistente virtual.`
           resolve({
             text: `${greeting} Para enviarte la guía con tips útiles, cuéntame: ¿qué tipo de empresa tienes?`,
             quickReplies: ['Empresario Individual', 'LTDA', 'SPA', 'Comandita', 'Cooperativa', 'Otro'],
