@@ -73,7 +73,7 @@ export default function FinalCTASection({ onNavigateToClaudia }: FinalCTASection
           Protege tu Negocio Hoy
         </h2>
         <p className="cta-subtitle text-[#b0b0b0] text-lg mt-6 max-w-[600px] mx-auto">
-          Ya sea en Chile o Colombia, no esperes a que el fisco tome la iniciativa. Descarga nuestra guía gratuita y descubre cómo la IA puede ayudarte a dormir tranquilo.
+          No esperes a que el fisco tome la iniciativa. Descarga nuestra guía gratuita y descubre cómo la IA puede ayudarte a dormir tranquilo.
         </p>
 
         <button

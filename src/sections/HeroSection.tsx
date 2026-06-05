@@ -247,7 +247,7 @@ export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
           className="hero-subtitle opacity-0 translate-y-5 mt-6 text-[#c8c8c8] text-lg md:text-xl font-normal leading-relaxed max-w-[560px] mx-auto"
           style={{ textWrap: 'pretty' }}
         >
-          ¿Te citó el SII y no sabes por dónde empezar? Conversa un minuto con ClaudiA, nuestra asesora virtual, y te entregamos de inmediato la guía que usan los abogados tributarios para proteger a sus clientes.
+          ¿Te citó el SII y no sabes por dónde empezar? Conversa un minuto con ClaudiA, nuestra asesora virtual, y te entregamos de inmediato la guía que preparé como auditor tributario para que enfrentes la citación con claridad y tranquilidad.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">

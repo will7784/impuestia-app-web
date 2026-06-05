@@ -19,9 +19,13 @@ export default function Navbar() {
             navigate('/')
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
-          className="text-white text-xl font-bold tracking-tight"
+          className="flex items-center"
         >
-          ImpuestIA
+          <img
+            src="/logo.png"
+            alt="ImpuestIA"
+            className="h-8 w-auto"
+          />
         </a>
 
         <button

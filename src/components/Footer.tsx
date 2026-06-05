@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-item flex items-center gap-3">
-          <span className="text-sm text-[#b0b0b0]">Chile · Colombia</span>
+          <span className="text-sm text-[#b0b0b0]">Chile</span>
           <svg
             width="24"
             height="24"
