@@ -21,11 +21,13 @@ export default function Navbar() {
           }}
           className="flex items-center"
         >
-          <img
-            src="/logo.png"
-            alt="ImpuestIA"
-            className="h-8 w-auto"
-          />
+          <div className="bg-white rounded-lg px-3 py-1.5">
+            <img
+              src="/logo.png"
+              alt="ImpuestIA"
+              className="h-10 w-auto"
+            />
+          </div>
         </a>
 
         <button
