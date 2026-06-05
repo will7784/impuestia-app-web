@@ -1,11 +1,7 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router'
 import HeroSection from '../sections/HeroSection'
-import ServicesSection from '../sections/ServicesSection'
-import ClientLogosSection from '../sections/ClientLogosSection'
-import WhyChooseUsSection from '../sections/WhyChooseUsSection'
-import HowItWorksSection from '../sections/HowItWorksSection'
-import TestimonialsSection from '../sections/TestimonialsSection'
+import ScheduleSection from '../sections/ScheduleSection'
 import FinalCTASection from '../sections/FinalCTASection'
 
 export default function Home() {
@@ -18,11 +14,7 @@ export default function Home() {
   return (
     <>
       <HeroSection onNavigateToClaudia={navigateToClaudia} />
-      <ServicesSection />
-      <ClientLogosSection />
-      <WhyChooseUsSection />
-      <HowItWorksSection />
-      <TestimonialsSection />
+      <ScheduleSection />
       <FinalCTASection onNavigateToClaudia={navigateToClaudia} />
     </>
   )

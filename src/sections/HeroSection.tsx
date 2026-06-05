@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+ gsap.registerPlugin(ScrollTrigger)
 
 const vertexShader = `
   varying vec2 vUv;
@@ -138,6 +138,7 @@ export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
       const title = contentRef.current?.querySelector('.hero-title')
       const subtitle = contentRef.current?.querySelector('.hero-subtitle')
       const cta = contentRef.current?.querySelector('.hero-cta')
+      const cta2 = contentRef.current?.querySelector('.hero-cta-secondary')
 
       if (label) {
         gsap.to(label, { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'expo.out' })
@@ -150,6 +151,9 @@ export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
       }
       if (cta) {
         gsap.to(cta, { opacity: 1, scale: 1, duration: 0.5, delay: 0.8, ease: 'back.out(1.7)' })
+      }
+      if (cta2) {
+        gsap.to(cta2, { opacity: 1, y: 0, duration: 0.5, delay: 1.0, ease: 'power2.out' })
       }
     })
 
@@ -171,6 +175,11 @@ export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
 
   const handleCTAClick = () => {
     onNavigateToClaudia()
+  }
+
+  const scrollToSchedule = () => {
+    const el = document.getElementById('agendar')
+    el?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -198,7 +207,7 @@ export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
           width: '100%',
           height: '100%',
           zIndex: 2,
-          opacity: 0.7,
+          opacity: 0.6,
         }}
       />
 
@@ -206,17 +215,17 @@ export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
       <div
         className="absolute inset-0 z-[3] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)',
+          background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.75) 100%)',
         }}
       />
 
       {/* Content */}
       <div
         ref={contentRef}
-        className="relative z-[4] text-center px-[5vw] max-w-[700px] mx-auto"
+        className="relative z-[4] text-center px-[5vw] max-w-[760px] mx-auto pt-16"
       >
         <div
-          className="hero-label opacity-0 translate-y-5 mb-6"
+          className="hero-label opacity-0 translate-y-5 mb-5"
           style={{
             color: '#ff3366',
             fontSize: '13px',
@@ -225,31 +234,43 @@ export default function HeroSection({ onNavigateToClaudia }: HeroSectionProps) {
             textTransform: 'uppercase',
           }}
         >
-          Asesoría Tributaria Potenciada con IA
+          Guía Gratuita — Pasos ante una citación del SII
         </div>
 
         <h1
-          className="hero-title opacity-0 translate-y-[30px] text-white font-extrabold leading-[0.95] tracking-[-0.02em] text-[40px] md:text-[72px]"
+          className="hero-title opacity-0 translate-y-[30px] text-white font-extrabold leading-[0.95] tracking-[-0.02em] text-[36px] md:text-[64px]"
         >
-          ImpuestIA
+          Habla con ClaudiA y recibe tu guía de regalo
         </h1>
 
         <p
-          className="hero-subtitle opacity-0 translate-y-5 mt-6 text-[#b0b0b0] text-lg font-normal leading-relaxed max-w-[520px] mx-auto"
+          className="hero-subtitle opacity-0 translate-y-5 mt-6 text-[#c8c8c8] text-lg md:text-xl font-normal leading-relaxed max-w-[560px] mx-auto"
           style={{ textWrap: 'pretty' }}
         >
-          Asesoría inteligente para tus impuestos en Chile y Colombia. Combinamos experiencia tributaria con inteligencia artificial (RAG) para defenderte ante el SII y optimizar tu carga fiscal.
+          ¿Te citó el SII y no sabes por dónde empezar? Conversa un minuto con ClaudiA, nuestra asesora virtual, y te entregamos de inmediato la guía que usan los abogados tributarios para proteger a sus clientes.
         </p>
 
-        <button
-          onClick={handleCTAClick}
-          className="hero-cta opacity-0 scale-90 mt-10 bg-[#ff3366] text-white px-10 py-4 rounded-full font-bold uppercase tracking-wider text-base hover:scale-105 hover:shadow-[0_0_30px_rgba(255,51,102,0.4)] transition-all duration-300"
-          style={{
-            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-        >
-          Habla con ClaudIA
-        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+          <button
+            onClick={handleCTAClick}
+            className="hero-cta opacity-0 scale-90 bg-[#ff3366] text-white px-10 py-4 rounded-full font-bold uppercase tracking-wider text-base hover:scale-105 hover:shadow-[0_0_30px_rgba(255,51,102,0.4)] transition-all duration-300"
+            style={{
+              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+          >
+            Chatear con ClaudiA
+          </button>
+
+          <button
+            onClick={scrollToSchedule}
+            className="hero-cta-secondary opacity-0 translate-y-3 text-white px-8 py-4 rounded-full font-semibold text-base hover:text-[#ff3366] transition-all duration-300 border border-white/20 hover:border-[#ff3366]/40"
+            style={{
+              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+          >
+            Agendar reunión directa
+          </button>
+        </div>
       </div>
     </section>
   )
