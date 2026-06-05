@@ -103,7 +103,7 @@ export default function ScheduleSection() {
             Agendar reunión gratuita
           </a>
           <span className="text-sm text-[#666]">
-            Chile · Colombia · 15 minutos · Sin compromiso
+            15 minutos · Sin compromiso
           </span>
         </div>
       </div>
